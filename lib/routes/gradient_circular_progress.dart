@@ -10,15 +10,14 @@ class GradientCircularProgressRoute extends StatefulWidget {
 }
 
 class GradientCircularProgressRouteState
-    extends State<GradientCircularProgressRoute>
-    with TickerProviderStateMixin {
+    extends State<GradientCircularProgressRoute> with TickerProviderStateMixin {
   AnimationController _animationController;
 
   @override
   void initState() {
     super.initState();
     _animationController =
-    new AnimationController(vsync: this, duration: Duration(seconds: 3));
+        new AnimationController(vsync: this, duration: Duration(seconds: 3));
     bool isForward = true;
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.forward) {
@@ -36,7 +35,6 @@ class GradientCircularProgressRouteState
     });
     _animationController.forward();
   }
-
 
   @override
   void dispose() {
@@ -76,7 +74,7 @@ class GradientCircularProgressRouteState
                             value: _animationController.value,
                           ),
                           GradientCircularProgressIndicator(
-                            colors: [Colors.red, Colors.orange,Colors.red],
+                            colors: [Colors.red, Colors.orange, Colors.red],
                             radius: 50.0,
                             stokeWidth: 5.0,
                             value: _animationController.value,
@@ -86,19 +84,24 @@ class GradientCircularProgressRouteState
                             radius: 50.0,
                             stokeWidth: 5.0,
                             strokeCapRound: true,
-                            value: CurvedAnimation(parent: _animationController, curve: Curves.decelerate).value,
+                            value: CurvedAnimation(
+                                    parent: _animationController,
+                                    curve: Curves.decelerate)
+                                .value,
                           ),
                           TurnBox(
-                            turns:1/8,
+                            turns: 1 / 8,
                             child: GradientCircularProgressIndicator(
-                              colors: [Colors.red, Colors.orange, Colors.red],
-                              radius: 50.0,
-                              stokeWidth: 5.0,
-                              strokeCapRound: true,
-                              backgroundColor: Colors.red[50],
-                              totalAngle: 1.5*pi,
-                              value: CurvedAnimation(parent: _animationController, curve: Curves.ease).value
-                            ),
+                                colors: [Colors.red, Colors.orange, Colors.red],
+                                radius: 50.0,
+                                stokeWidth: 5.0,
+                                strokeCapRound: true,
+                                backgroundColor: Colors.red[50],
+                                totalAngle: 1.5 * pi,
+                                value: CurvedAnimation(
+                                        parent: _animationController,
+                                        curve: Curves.ease)
+                                    .value),
                           ),
                           RotatedBox(
                             quarterTurns: 1,
@@ -108,8 +111,7 @@ class GradientCircularProgressRouteState
                                 stokeWidth: 3.0,
                                 strokeCapRound: true,
                                 backgroundColor: Colors.transparent,
-                                value: _animationController.value
-                            ),
+                                value: _animationController.value),
                           ),
                           GradientCircularProgressIndicator(
                             colors: [
@@ -191,10 +193,11 @@ class GradientCircularProgressRouteState
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
-                              child: Text("${(_animationController.value*100).toInt()}%",
+                              child: Text(
+                                "${(_animationController.value * 100).toInt()}%",
                                 style: TextStyle(
-                                    fontSize: 25.0,
-                                    color: Colors.blueGrey,
+                                  fontSize: 25.0,
+                                  color: Colors.blueGrey,
                                 ),
                               ),
                             )
@@ -206,16 +209,9 @@ class GradientCircularProgressRouteState
                 );
               },
             ),
-
           ],
         ),
       ),
     );
   }
 }
-
-
-
-
-
-
